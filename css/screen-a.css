@@ -1,76 +1,20 @@
 /*------------------------------------*\
 #FONTS
 \*------------------------------------*/
-
 @font-face {
-    font-family: "Inter Web";
+    font-family: "Inter";
     font-weight: 400;
-    src: url("../fonts/Inter-Regular.woff2") format("woff2")
-}
-
-@font-face {
-    font-family: "Inter Web";
-    font-weight: 600;
-    src: url("../fonts/Inter-SemiBold.woff2") format("woff2")
+    src: url("../fonts/Inter-UI-Regular.woff2") format("woff2");
+    font-display: swap;
 }
 
 /*------------------------------------*\
 #Variables
 \*------------------------------------*/
 
-:root {
-    /* colors */
-    --global-input-backgroundColor: White;
-    --global-input-color: var(--global-color-neutral-xxxx-dark);
-    --global-input-borderColor: var(--global-color-neutral-xxx-light);
-    --global-input-hover-borderColor: var(--global-color-neutral-xx-light);
-    --global-input-focus-borderColor: var(--global-color-alpha);
-    --global-input-boxShadow: 0 0 0 3px var(--global-color-alpha-x-transparent);
+:root {}
 
-    --global-color-alpha-light: #4F95FF;
-    --global-color-alpha: #3385FF;
-    --global-color-alpha-dark: #2E77E6;
-    --global-color-alpha-x-dark: #1B4186;
-    --global-color-alpha-transparent: #3385ffbf;
-    --global-color-alpha-x-transparent: #3385ff4d;
-
-    --global-color-neutral-xxxx-light: #F5F6FA;
-    --global-color-neutral-xxx-light: #E2E3E7;
-    --global-color-neutral-xx-light: #caccd4;
-    --global-color-neutral-x-light: #b5b6c0;
-    --global-color-neutral-light: #a0a1ad;
-    --global-color-neutral: #8b8c9a;
-    --global-color-neutral-dark: #757787;
-    --global-color-neutral-x-dark: #606274;
-    --global-color-neutral-xx-dark: #4b4c60;
-    --global-color-neutral-xxx-dark: #35374d;
-    --global-color-neutral-xxxx-dark: #20223a;
-
-    /* border stuff */
-    --global-borderRadius: 3px;
-    --global-borderWidth: 1px;
-
-    /* transitions */
-    --global-transitionTiming-alpha: .1s ease-out;
-
-    /* Baseline settings */
-    --global-baseline: 8px;
-    --global-whitespace: calc(var(--global-baseline) * 3);
-    /* = 24px */
-
-    --global-whitespace-xs: calc(var(--global-baseline) / 2);
-    /* = 4px */
-    --global-whitespace-sm: calc(var(--global-baseline) * 1);
-    /*  = 8px */
-    --global-whitespace-md: calc(var(--global-baseline) * 2);
-    /*  = 16px */
-    --global-whitespace-lg: calc(var(--global-baseline) * 4);
-    /*  = 32px */
-    --global-whitespace-xl: calc(var(--global-whitespace) * 2);
-    /*  = 48px */
-    --global-whitespace-xxl: calc(var(--global-whitespace) * 3);
-    /*  = 72px */
-}
+/* CSS variables here */
 
 /*------------------------------------*\
 #GENERIC
@@ -85,12 +29,12 @@
 html {
     font-size: 16px;
     line-height: 1.5;
-    font-family: "Inter Web", Helvetica, arial, sans-serif;
-    color: var(--global-color-neutral-xxxx-dark);
-    background-color: var(--global-color-neutral-xxxx-light);
+    font-family: Inter, Helvetica, arial, sans-serif;
+    color: #20223a;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: #F5F6FA;
 }
 
 *,
@@ -107,13 +51,13 @@ html {
 */
 
 ::-moz-selection {
-    background: var(--global-color-alpha);
+    background: #3385FF;
     color: white;
     text-shadow: none;
 }
 
 ::selection {
-    background: var(--global-color-alpha);
+    background: #3385FF;
     color: white;
     text-shadow: none;
 }
@@ -142,34 +86,33 @@ img {
 h1,
 h2,
 h3 {
-    font-weight: 700;
+    font-weight: 600;
 }
 
 h1 {
     font-size: 36px;
-    line-height: calc(var(--global-baseline) * 6);
-    margin: 0 0 var(--global-whitespace);
+    line-height: 48px;
+    margin: 0 0 24px;
 }
 
 h2 {
     font-size: 32px;
-    line-height: calc(var(--global-baseline) * 5);
-    margin: 0 0 var(--global-whitespace);
+    line-height: 40px;
+    margin: 0 0 24px;
 }
 
 h3 {
     font-size: 26px;
-    line-height: calc(var(--global-baseline) * 4);
-    margin: 0 0 var(--global-whitespace);
+    line-height: 32px;
+    margin: 0 0 24px;
 }
 
 h4,
 h5,
 h6 {
-    font-size: 16px;
-    font-weight: 600;
-    line-height: calc(var(--global-baseline) * 3);
-    margin: 0 0 var(--global-whitespace);
+    font-size: 20px;
+    line-height: 24px;
+    margin: 0 0 24px;
 }
 
 p,
@@ -179,12 +122,12 @@ dl,
 table,
 address,
 figure {
-    margin: 0 0 var(--global-whitespace);
+    margin: 0 0 24px;
 }
 
 ul,
 ol {
-    padding-left: var(--global-whitespace);
+    padding-left: 24px;
 }
 
 li ul,
@@ -195,8 +138,8 @@ li ol {
 blockquote {
     font-style: normal;
     font-size: 23px;
-    line-height: calc(var(--global-baseline) * 6);
-    margin: 0 0 var(--global-whitespace);
+    line-height: 32px;
+    margin: 0 0 24px;
 }
 
 blockquote * {
@@ -207,42 +150,35 @@ blockquote * {
 figcaption {
     font-weight: 400;
     font-size: 12px;
-    line-height: calc(var(--global-baseline) * 2);
-    margin-top: var(--global-whitespace-xxs);
+    line-height: 16px;
+    margin-top: 8px;
 }
 
 hr {
     border: 0;
-    height: var(--global-borderWidth);
+    height: 1px;
     background: LightGrey;
-    margin: 0 0 var(--global-whitespace);
+    margin: 0 0 24px;
 }
 
-a,
-a:visited {
-    transition: all var(--global-transitionTiming-alpha);
-    color: var(--global-color-alpha);
-    outline-color: var(--global-link-BoxShadowColor);
-    outline-width: medium;
-    outline-offset: 2px;
+a {
+    color: #3385FF;
+    transition: all .1s ease-in-out;
+}
+
+a:visited,
+a:active {
+    color: darkblue;
 }
 
 a:hover,
 a:focus {
-    color: var(--global-color-alpha-light);
-}
-
-a:active {
-    color: var(--global-color-alpha-dark);
+    color: darkblue;
 }
 
 label,
 input {
     display: block;
-}
-
-input::placeholder {
-    color: var(--global-color-neutral-x-light);
 }
 
 /*------------------------------------*\
@@ -257,29 +193,36 @@ input::placeholder {
 
 .o-row {
     position: relative;
-    padding: var(--global-whitespace) var(--global-whitespace) 0;
+    padding: 24px 24px 0;
 }
 
 .o-row--login {
-    min-height: 100vh;
-    display: -webkit-flex;
-    display: -ms-flex;
-    display: flex;
-    -ms-align-items: center;
-    align-items: center;
+    /* stuff here to align the card */
 }
 
 /* size modifiers */
 
 .o-row--lg {
-    padding-top: var(--global-whitespace-lg);
-    padding-bottom: var(--global-whitespace);
+    padding-top: 48px;
+    padding-bottom: 24px;
+}
+
+.o-row--xl {
+    padding-top: 72px;
+    padding-bottom: 48px;
 }
 
 @media (min-width: 768px) {
     .o-row {
-        padding-left: var(--global-whitespace-lg);
-        padding-right: var(--global-whitespace-lg);
+        padding-left: 48px;
+        padding-right: 48px;
+    }
+}
+
+@media (min-width: 992px) {
+    .o-row--xl {
+        padding-top: 96px;
+        padding-bottom: 72px;
     }
 }
 
@@ -308,20 +251,20 @@ input::placeholder {
 }
 
 .o-section+.o-section {
-    padding-top: var(--global-whitespace);
+    padding-top: 24px;
 }
 
 @media (min-width: 768px) {
 
     .o-section--lg+.o-section--lg,
     .o-section--xl+.o-section--xl {
-        padding-top: var(--global-whitespace-lg);
+        padding-top: 48px;
     }
 }
 
 @media (min-width: 992px) {
     .o-section--xl+.o-section--xl {
-        padding-top: var(--global-whitespace-xxl);
+        padding-top: 72px;
     }
 }
 
@@ -363,19 +306,19 @@ input::placeholder {
 }
 
 .o-layout--gutter-lg {
-    margin: 0 calc(var(--global-whitespace) * -1);
+    margin: 0 -24px;
 }
 
 .o-layout--gutter-lg>.o-layout__item {
-    padding: 0 var(--global-whitespace);
+    padding: 0 24px;
 }
 
 .o-layout--gutter-xl {
-    margin: 0 calc(var(--global-whitespace-lg) * -1);
+    margin: 0 -48px;
 }
 
 .o-layout--gutter-xl>.o-layout__item {
-    padding: 0 var(--global-whitespace-lg);
+    padding: 0 48px;
 }
 
 /* reverse horizontal row modifier */
@@ -490,23 +433,6 @@ input::placeholder {
     -webkit-appearance: none;
 }
 
-/*
-    Object: Hide accessible
-    ---
-    Accessibly hide any element
-*/
-
-.o-hide-accessible {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-}
-
 /*------------------------------------*\
 #COMPONENTS
 \*------------------------------------*/
@@ -518,27 +444,26 @@ input::placeholder {
 */
 
 .c-logo {
-    height: var(--global-whitespace);
     display: flex;
-    align-items: center;
     justify-content: center;
-    margin-bottom: var(--global-whitespace-lg);
+    height: 24px;
 }
 
 .c-logo__symbol {
     height: 100%;
+    display: block;
 }
 
-.c-logo__path--1 {
-    fill: var(--global-color-neutral-xxxx-dark);
+.c-logo__fill1 {
+    fill: #20223A
 }
 
-.c-logo__path--2 {
-    fill: var(--global-color-alpha);
+.c-logo__fill2 {
+    fill: #3385FF
 }
 
-.c-logo__path--3 {
-    fill: var(--color-alpha-x-dark);
+.c-logo__fill3 {
+    fill: #1B4186;
 }
 
 /*
@@ -548,48 +473,30 @@ input::placeholder {
 */
 
 .c-card {
-    background-color: White;
-    margin-bottom: var(--global-whitespace);
-    border-radius: var(--global-borderRadius);
-    box-shadow: 0 0 0 var(--global-borderWidth) rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, .075);
-    overflow: hidden;
+    background-color: white;
+    border-radius: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.05),
+        0 2px 4px rgba(0, 0, 0, .075);
+    box-shadow: 0 0 0 3px #00000007;
 }
 
-/* Add padding to child for more flexibility */
-.c-card__body,
-.c-card__footer {
-    padding: var(--global-whitespace);
-}
-
-.c-card__footer {
-    text-align: center;
-    border-top: var(--global-borderWidth) solid var(--global-color-neutral-xxx-light);
+.c-card__body {
+    padding: 48px;
 }
 
 .c-card__title {
     text-align: center;
     font-size: 18px;
-    line-height: calc(var(--global-baseline) * 3);
-    font-weight: 600;
+    font-weight: bold;
+    line-height: 26px;
+    margin-bottom: 16px;
+    padding-top: 48px;
 }
 
-/* This allows c-card__body and __footer to have equal padding everywhere */
-
-.c-card__body>*:last-child,
-.c-card__footer>*:last-child,
-.c-card__body>*:last-child>*:last-child,
-.c-card__footer>*:last-child>*:last-child {
-    margin-bottom: 0;
-}
-
-@media (min-width: 27em) {
-    .c-card__body {
-        padding: var(--global-whitespace-xl);
-    }
-
-    .c-card__title {
-        margin-bottom: var(--global-whitespace-xl);
-    }
+.c-card__footer {
+    padding: 24px;
+    border-top: 1px solid #E2E3E7;
+    text-align: center;
 }
 
 /*
@@ -597,12 +504,8 @@ input::placeholder {
     ---
     Everything form related here
 */
-
 .c-form-field--option {
-    display: -webkit-flex;
-    display: -ms-flex;
     display: flex;
-    -ms-align-items: center;
     align-items: center;
 }
 
@@ -617,68 +520,19 @@ input::placeholder {
     -moz-appearance: none;
     appearance: none;
     width: 100%;
-    border: var(--global-borderWidth) solid var(--global-color-neutral-xxx-light);
-    border-radius: var(--global-borderRadius);
-    color: var(--global-color-neutral-xxxx-dark);
-    background-color: var(--input_background, white);
-    font-family: inherit;
-    font-size: 16px;
-    line-height: calc(var(--global-baseline) * 3);
-    padding: calc(var(--global-baseline) * 1.5 - var(--global-borderWidth)) var(--global-whitespace-md);
-    outline: none;
-    transition: border var(--global-transition-timing-alpha);
-    border: var(--input-borderWidth, var(--global-borderWidth)) solid var(--input-borderColor, var(--global-input-borderColor));
-    background-color: var(--input-backgroundColor, var(--global-input-backgroundColor));
-    color: var(--global-input-color);
-}
-
-.c-input:hover {
-    --input-focus-borderColor: rgb(255, 0, 38);
-    border-color: var(var(--input-focus-borderColor), var(--global-color-neutral-xx-light));
-}
-
-.c-input:focus,
-.c-input:active {
-    border-color: var(--global-color-alpha);
-    box-shadow: 0 0 0 3px var(--global-color-alpha-x-transparent);
-}
-
-/* option input for checkboxes and radio buttons */
-
-.c-option {
-    margin-right: var(--global-whitespace-sm);
-}
-
-.c-custom-option {
-    display: inline
-}
-
-.c-custom-option__fake-input {
-    display: flex;
-    width: 16px;
-    height: 16px;
-    border: 1px solid var(--global-baseline);
-    margin-right: 8px;
-}
-
-.c-custom-option__fake-input--checkbox {
+    border: 1px #E2E3E7 solid;
     border-radius: 3px;
+    font-family: Inter;
+    color: #E2E3E7;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 11px;
+    outline: none;
 }
 
-.c-custom-option__fake-input--radio {
-    border-radius: 100%;
-}
-
-.c-custom-option__symbol {
-    opacity: 1;
-}
-
-.c-option--hidden:checked+.c-custom-option {
-    background-color: red;
-}
-
-.c-option--hidden:checked+.c-custom-option .c-custom-option__symbol {
-    fill: blue;
+.c-input:focus {
+    border-color: #3385FF;
+    box-shadow: 0 0 0 3px #3385ff4d;
 }
 
 /*
@@ -688,48 +542,87 @@ input::placeholder {
 */
 
 .c-label {
-    margin-bottom: 0;
     font-size: 14px;
-    padding-bottom: var(--global-whitespace-xs);
-    line-height: calc(var(--global-baseline) * 2);
-    color: var(--global-color-neutral-xx-dark);
+    line-height: 16px;
+    margin-bottom: 8px;
+    color: #606274
 }
 
 .c-label--option {
-    padding-bottom: 0;
+    margin-left: 8px;
+    margin-bottom: 0;
 }
+
+/* If a input is focused within the form-field class change te color of the label */
+
+.c-form-field:focus-within .c-label {}
 
 /*
     Component: Button
     ---
-    Class to put on form buttons or
+    Class to put on form buttons or links
 */
 
 .c-button {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: white;
     font-size: 16px;
-    font-weight: 700;
-    border-radius: var(--global-borderRadius);
-    border: var(--global-borderWidth) solid var(--global-color-alpha-dark);
-    background-color: var(--global-color-alpha);
-    color: #fff;
-    padding: calc(var(--global-baseline) * 1.5 - var(--global-borderWidth)) var(--global-whitespace-md);
-    line-height: calc(var(--global-baseline) * 3);
+    font-weight: bold;
+    border: 1px solid #2E77E6;
+    border-radius: 3px;
+    background-color: #3385FF;
+    line-height: 24px;
+    padding: 13px;
     width: 100%;
-    outline: none;
-    transition: all var(--global-transition-timing-alpha);
+
 }
 
 .c-button:hover {
-    background-color: var(--global-color-alpha-light);
+    color: white;
+    background-color: #4F95FF;
+    border-color: #2E77E6;
+
 }
 
 .c-button:focus {
-    box-shadow: 0 0 0 3px var(--global-color-alpha-x-transparent);
+    color: white;
+    background-color: #2E77E6;
+    border-color: #2E77E6;
 }
 
 .c-button:active {
-    background-color: var(--global-color-alpha-dark);
-    box-shadow: none;
+    color: white;
+    background-color: #3385FF;
+    border-color: #2E77E6;
+    box-shadow: 0 0 0 3px #3385FF4d;
+
+}
+
+.c-button--block {}
+
+
+.c-password {
+    text-align: center;
+    margin: 0;
+}
+
+.c-password__link {
+    text-decoration: none;
+}
+
+.c-text {
+    font-size: 14px;
+}
+
+.c-text--gray {
+    color: #757787;
+    margin: 0;
+}
+
+.c-block {
+    margin: auto;
 }
 
 /*------------------------------------*\
@@ -742,12 +635,12 @@ input::placeholder {
     Utility classes to put specific colors onto elements
 */
 
-.u-color-neutral {
-    color: var(--global-color-neutral);
+.u-color-neutral-base {
+    color: Silver;
 }
 
 .u-color-neutral-dark {
-    color: var(--global-color-neutral-dark);
+    color: Black;
 }
 
 /*
@@ -765,27 +658,23 @@ input::placeholder {
 }
 
 .u-mb-xs {
-    margin-bottom: var(--global-whitespace-xs) !important;
+    margin-bottom: 4px !important;
 }
 
 .u-mb-sm {
-    margin-bottom: var(--global-whitespace-sm) !important;
+    margin-bottom: 8px !important;
 }
 
 .u-mb-md {
-    margin-bottom: var(--global-whitespace-md) !important;
+    margin-bottom: 16px !important;
 }
 
 .u-mb-lg {
-    margin-bottom: var(--global-whitespace-lg) !important;
+    margin-bottom: 32px !important;
 }
 
 .u-mb-xl {
-    margin-bottom: var(--global-whitespace-xl) !important;
-}
-
-.u-mb-xl {
-    margin-bottom: var(--global-whitespace-xl) !important;
+    margin-bottom: 48px !important;
 }
 
 /*
@@ -1184,16 +1073,5 @@ No media query since this is the default in mobile first design
     h2,
     h3 {
         page-break-after: avoid;
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --global-page-color: White;
-        --global-page-backgroundColor: var(--color-neutral-xxxx-dark);
-    }
-
-    .c-input {
-        --input_background: var(--global-color-neutral-xxxx-dark)
     }
 }
