@@ -20,13 +20,6 @@
 
 :root {
     /* colors */
-    --global-input-backgroundColor: White;
-    --global-input-color: var(--global-color-neutral-xxxx-dark);
-    --global-input-borderColor: var(--global-color-neutral-xxx-light);
-    --global-input-hover-borderColor: var(--global-color-neutral-xx-light);
-    --global-input-focus-borderColor: var(--global-color-alpha);
-    --global-input-boxShadow: 0 0 0 3px var(--global-color-alpha-x-transparent);
-
     --global-color-alpha-light: #4F95FF;
     --global-color-alpha: #3385FF;
     --global-color-alpha-dark: #2E77E6;
@@ -55,22 +48,65 @@
 
     /* Baseline settings */
     --global-baseline: 8px;
-    --global-whitespace: calc(var(--global-baseline) * 3);
-    /* = 24px */
+    --global-whitespace: calc(var(--global-baseline) * 3); /* = 24px */
 
-    --global-whitespace-xs: calc(var(--global-baseline) / 2);
-    /* = 4px */
-    --global-whitespace-sm: calc(var(--global-baseline) * 1);
-    /*  = 8px */
-    --global-whitespace-md: calc(var(--global-baseline) * 2);
-    /*  = 16px */
-    --global-whitespace-lg: calc(var(--global-baseline) * 4);
-    /*  = 32px */
-    --global-whitespace-xl: calc(var(--global-whitespace) * 2);
-    /*  = 48px */
-    --global-whitespace-xxl: calc(var(--global-whitespace) * 3);
-    /*  = 72px */
+    --global-whitespace-xs: calc(var(--global-baseline) / 2); /* = 4px */
+    --global-whitespace-sm: calc(var(--global-baseline) * 1); /*  = 8px */
+    --global-whitespace-md: calc(var(--global-baseline) * 2); /*  = 16px */
+    --global-whitespace-lg: calc(var(--global-baseline) * 4); /*  = 32px */
+    --global-whitespace-xl: calc(var(--global-whitespace) * 2); /*  = 48px */
+    --global-whitespace-xxl: calc(var(--global-whitespace) * 3); /*  = 72px */
+
+    --global-input-backgroundColor: White;
+    --global-input-color: var(--global-color-neutral-xxxx-dark);
+    --global-input-borderColor: var(--global-color-neutral-xxx-light);
+    --global-input-hover-borderColor: var(--global-color-neutral-xx-light);
+    --global-input-focus-borderColor: var(--global-color-alpha);
+    --global-input-boxShadow: 0 0 0 3px var(--global-color-alpha-x-transparent);
+
+    --global-input-BoxShadowSpread: 0 0 0 0;
+    --global-input-boxShadowSpreadFocus: 0 0 0 4px;
+    --global-input-boxShadowColor: var(--global-color-alpha-x-transparent);
+
+    --global-page-color: var(--color-neutral-xxxx-dark);
+    --global-page-backgroundColor: var(--color-neutral-xxxx-light);
 }
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --global-page-color: White;
+        --global-page-backgroundColor: var(--global-color-neutral-xxxx-dark);
+    }
+
+    .c-logo {
+        --logo__path--1--fill: White;
+        --logo__path--2--fill: var(--logo__path--1--fill);
+        --logo__path--3--fill: var(--logo__path--1--fill);
+    }
+
+    .c-card {
+        --c-card-background-color: var(--global-color-neutral-xxx-dark);
+        --c-card-borderColor: var(--global-color-neutral-xxxx-dark);
+    }
+
+    .c-card__body {
+        --c-card-borderColor: var(--global-color-neutral-xxxx-dark);
+    }
+
+    input::placeholder {
+        --input-placeholder: var(--global-color-neutral-x-light);
+    }
+
+    .c-label {
+        --input-color: var(--global-color-neutral-x-light);
+    }
+
+    .c-input {
+        --input-backgroundColor: var(--global-color-neutral-xxxx-dark);
+        --input-borderColor: var(--global-color-neutral-xxxx-dark);
+    }
+}
+
 
 /*------------------------------------*\
 #GENERIC
@@ -86,8 +122,8 @@ html {
     font-size: 16px;
     line-height: 1.5;
     font-family: "Inter Web", Helvetica, arial, sans-serif;
-    color: var(--global-color-neutral-xxxx-dark);
-    background-color: var(--global-color-neutral-xxxx-light);
+    color: var(--global-page-color);
+    background-color: var(--global-page-backgroundColor);
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -242,7 +278,7 @@ input {
 }
 
 input::placeholder {
-    color: var(--global-color-neutral-x-light);
+    color: var(--input-placeholder, var(--global-color-neutral-xx-dark));
 }
 
 /*------------------------------------*\
@@ -292,8 +328,7 @@ input::placeholder {
 .o-container {
     margin-left: auto;
     margin-right: auto;
-    max-width: 79.5em;
-    /* 79.5 * 16px = 1272 */
+    max-width: 79.5em; /* 79.5 * 16px = 1272 */
     width: 100%;
 }
 
@@ -307,20 +342,19 @@ input::placeholder {
     position: relative;
 }
 
-.o-section+.o-section {
+.o-section + .o-section {
     padding-top: var(--global-whitespace);
 }
 
 @media (min-width: 768px) {
-
-    .o-section--lg+.o-section--lg,
-    .o-section--xl+.o-section--xl {
+    .o-section--lg + .o-section--lg,
+    .o-section--xl + .o-section--xl {
         padding-top: var(--global-whitespace-lg);
     }
 }
 
 @media (min-width: 992px) {
-    .o-section--xl+.o-section--xl {
+    .o-section--xl + .o-section--xl {
         padding-top: var(--global-whitespace-xxl);
     }
 }
@@ -350,7 +384,7 @@ input::placeholder {
     margin: 0 -12px;
 }
 
-.o-layout--gutter>.o-layout__item {
+.o-layout--gutter > .o-layout__item {
     padding: 0 12px;
 }
 
@@ -358,7 +392,7 @@ input::placeholder {
     margin: 0 -6px;
 }
 
-.o-layout--gutter-sm>.o-layout__item {
+.o-layout--gutter-sm > .o-layout__item {
     padding: 0 6px;
 }
 
@@ -366,7 +400,7 @@ input::placeholder {
     margin: 0 calc(var(--global-whitespace) * -1);
 }
 
-.o-layout--gutter-lg>.o-layout__item {
+.o-layout--gutter-lg > .o-layout__item {
     padding: 0 var(--global-whitespace);
 }
 
@@ -374,7 +408,7 @@ input::placeholder {
     margin: 0 calc(var(--global-whitespace-lg) * -1);
 }
 
-.o-layout--gutter-xl>.o-layout__item {
+.o-layout--gutter-xl > .o-layout__item {
     padding: 0 var(--global-whitespace-lg);
 }
 
@@ -530,15 +564,15 @@ input::placeholder {
 }
 
 .c-logo__path--1 {
-    fill: var(--global-color-neutral-xxxx-dark);
+  fill: var(--logo__path--1--fill, var(--global-color-neutral-xxxx-dark));
 }
 
 .c-logo__path--2 {
-    fill: var(--global-color-alpha);
+  fill: var(--logo__path--2--fill, var(--global-color-alpha));
 }
 
 .c-logo__path--3 {
-    fill: var(--color-alpha-x-dark);
+  fill: var(--logo__path--3--fill, var(--global-color-alpha-x-dark));
 }
 
 /*
@@ -548,11 +582,16 @@ input::placeholder {
 */
 
 .c-card {
-    background-color: White;
+    background-color: var(--c-card-background-color, var(--global-color-neutral-xxx-light));
     margin-bottom: var(--global-whitespace);
     border-radius: var(--global-borderRadius);
-    box-shadow: 0 0 0 var(--global-borderWidth) rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, .075);
+    box-shadow: 0 0 0 var(--global-borderWidth) rgba(0,0,0, 0.05), 0 2px 4px rgba(0,0,0,.075);
     overflow: hidden;
+    border-color: var(--c-card-borderColor, var(--global-color-neutral-xxx-light));
+}
+
+.c-card__body {
+    border-color: var(--c-card-borderColor, var(--global-color-neutral-xxx-light));
 }
 
 /* Add padding to child for more flexibility */
@@ -575,10 +614,10 @@ input::placeholder {
 
 /* This allows c-card__body and __footer to have equal padding everywhere */
 
-.c-card__body>*:last-child,
-.c-card__footer>*:last-child,
-.c-card__body>*:last-child>*:last-child,
-.c-card__footer>*:last-child>*:last-child {
+.c-card__body > *:last-child,
+.c-card__footer > *:last-child,
+.c-card__body > *:last-child > *:last-child,
+.c-card__footer > *:last-child > *:last-child {
     margin-bottom: 0;
 }
 
@@ -617,24 +656,21 @@ input::placeholder {
     -moz-appearance: none;
     appearance: none;
     width: 100%;
-    border: var(--global-borderWidth) solid var(--global-color-neutral-xxx-light);
+    border: var(--input-borderWidth, var(--global-borderWidth)) solid var(--input-borderColor, var(--global-input-borderColor));
     border-radius: var(--global-borderRadius);
     color: var(--global-color-neutral-xxxx-dark);
-    background-color: var(--input_background, white);
+    background-color: var(--input-backgroundColor, var(--global-input-backgroundColor));
     font-family: inherit;
     font-size: 16px;
     line-height: calc(var(--global-baseline) * 3);
     padding: calc(var(--global-baseline) * 1.5 - var(--global-borderWidth)) var(--global-whitespace-md);
     outline: none;
     transition: border var(--global-transition-timing-alpha);
-    border: var(--input-borderWidth, var(--global-borderWidth)) solid var(--input-borderColor, var(--global-input-borderColor));
-    background-color: var(--input-backgroundColor, var(--global-input-backgroundColor));
-    color: var(--global-input-color);
 }
 
 .c-input:hover {
-    --input-focus-borderColor: rgb(255, 0, 38);
-    border-color: var(var(--input-focus-borderColor), var(--global-color-neutral-xx-light));
+    --input-focus-borderColor: rgb(255,0,38);
+    border-color: var(var(--input-focus-borderColor) ,var(--global-color-neutral-xx-light));
 }
 
 .c-input:focus,
@@ -649,36 +685,176 @@ input::placeholder {
     margin-right: var(--global-whitespace-sm);
 }
 
+.c-option-list {
+    margin-bottom: 24px;
+}
+
+.c-option-list__item {
+    margin-bottom: 12px;
+}
+
 .c-custom-option {
-    display: inline
+    display: flex;
+    --custom-option-focus-borderColor: var(--global-input-focus-borderColor);
+    --custom-option-BoxShadowColor: var(--global-input-BoxShadowColor);
+    --custom-option-focus-boxShadow: var(--global-input-BoxShadowSpread) var(--custom-option-BoxShadowColor);
+}
+
+.c-custom-option:hover {
+    --custom-option-borderColor: var(--custom-option-hover-borderColor);
+}
+
+.c-option--hidden:focus + .c-custom-option .c-custom-option__fake-input,
+.c-option--hidden:active  + .c-custom-option .c-custom-option__fake-input {
+    border-color: var(--global-color-alpha);
+    box-shadow: var(--custom-option-boxShadow, 0);
+}
+
+.c-option--hidden:checked + .c-custom-option {
+    /* background-color: red; */
+
+}
+
+.c-option--hidden:checked + .c-custom-option .c-custom-option__symbol {
+    opacity: 1;
+    transform: scale(1);
+
+}
+
+.c-custom-option__symbol {
+    display: block;
+    margin: auto;
+    opacity: 0;
+    transform: scale(0);
+
+    will-change: opacity, transform;
+    transition: opacity 200ms ease-out, transform 210ms cubic-bezier(0.46, -0.57, 0.56, 1.68);
 }
 
 .c-custom-option__fake-input {
     display: flex;
     width: 16px;
     height: 16px;
-    border: 1px solid var(--global-baseline);
+    border: 1px solid var(--global-color-neutral-xxx-light);
     margin-right: 8px;
-}
 
-.c-custom-option__fake-input--checkbox {
-    border-radius: 3px;
+    box-shadow: var(--custom-option-boxShadow, 0);
 }
 
 .c-custom-option__fake-input--radio {
-    border-radius: 100%;
+    border-radius: 50%;
 }
 
-.c-custom-option__symbol {
-    opacity: 1;
+.c-custom-option__fake-input--checkbox {
+    border-radius: var(--global-borderRadius);
 }
 
-.c-option--hidden:checked+.c-custom-option {
-    background-color: red;
+.c-custom-option__fake-input--checkbox .c-custom-option__symbol {
+    width: 10px;
+    height: 10px;
+    fill: var(--global-color-alpha);
 }
 
-.c-option--hidden:checked+.c-custom-option .c-custom-option__symbol {
-    fill: blue;
+.c-custom-option__fake-input--radio .c-custom-option__symbol {
+    width: 6px;
+    height: 6px;
+    background: var(--global-color-alpha);
+    border-radius: 50%;
+}
+
+/* Toggle */
+.c-custom-toggle {
+	display: flex;
+	align-items: center;
+
+	--local-toggle-backgroundColor: var(--global-color-neutral-xxxx-light);
+	--local-toggle-borderColor: var(--global-color-neutral-xxx-light);
+	--local-toggle-transformX: 0;
+}
+
+.c-custom-toggle__fake-input {
+	display: block;
+	width: 48px;
+	height: 24px;
+	margin-right: 16px;
+
+	background: var(--local-toggle-backgroundColor);
+	border: 1px solid var(--local-toggle-borderColor);
+	border-radius: 24px;
+}
+
+.c-custom-toggle__fake-input::after {
+	content: '';
+	display: block;
+	width: 22px;
+	height: 22px;
+
+	background: var(--global-input-backgroundColor);
+	border-radius: 50%;
+	box-shadow: 0 2px 4px rgba(0,0,0,.016);
+
+	will-change: transform;
+	transform: translateX(var(--local-toggle-transformX));
+	transition: transform 200ms ease-in;
+}
+
+.c-option--hidden:checked + .c-custom-toggle {
+	--local-toggle-backgroundColor: var(--global-color-alpha);
+	--local-toggle-borderColor: var(--global-color-alpha-dark);
+	--local-toggle-transformX: 24px;
+
+}
+
+/* Toggle */
+.c-custom-toggle {
+	display: flex;
+	align-items: center;
+
+	--local-toggle-backgroundColor: var(--global-color-neutral-xxxx-light);
+	--local-toggle-borderColor: var(--global-color-neutral-xxx-light);
+	--local-toggle-transformX: 0;
+    --local-toggle-boxShadowColor: var(--global-color-alpha-x-transparent);
+    --local-toggle-boxShadow: var(--global-input-BoxShadowSpread);
+}
+
+.c-custom-toggle__fake-input {
+	display: block;
+	width: 48px;
+	height: 24px;
+	margin-right: 16px;
+
+	background: var(--local-toggle-backgroundColor);
+	border: 1px solid var(--local-toggle-borderColor);
+	border-radius: 24px;
+
+    box-shadow: var(--local-toggle-boxShadow) var(--local-toggle-boxShadowColor);
+
+}
+
+.c-option--hidden:focus + .c-custom-toggle {
+    --local-toggle-boxShadow: var(--global-input-boxShadowSpreadFocus);
+}
+
+.c-custom-toggle__fake-input::after {
+	content: '';
+	display: block;
+	width: 22px;
+	height: 22px;
+
+	background: var(--global-input-backgroundColor);
+	border-radius: 50%;
+	box-shadow: 0 2px 4px rgba(0,0,0,.016);
+
+	will-change: transform;
+	transform: translateX(var(--local-toggle-transformX));
+	transition: transform 200ms ease-in;
+}
+
+.c-option--hidden:checked + .c-custom-toggle {
+	--local-toggle-backgroundColor: var(--global-color-alpha);
+	--local-toggle-borderColor: var(--global-color-alpha-dark);
+	--local-toggle-transformX: 24px;
+
 }
 
 /*
@@ -692,7 +868,7 @@ input::placeholder {
     font-size: 14px;
     padding-bottom: var(--global-whitespace-xs);
     line-height: calc(var(--global-baseline) * 2);
-    color: var(--global-color-neutral-xx-dark);
+    color: var(--input-color,var(--global-color-neutral-xx-dark));
 }
 
 .c-label--option {
@@ -897,43 +1073,33 @@ input::placeholder {
     .u-1-of-2-bp1 {
         width: 50% !important;
     }
-
     .u-1-of-3-bp1 {
         width: 33.3333333333% !important;
     }
-
     .u-2-of-3-bp1 {
         width: 66.6666666667% !important;
     }
-
     .u-1-of-4-bp1 {
         width: 25% !important;
     }
-
     .u-3-of-4-bp1 {
         width: 75% !important;
     }
-
     .u-1-of-5-bp1 {
         width: 20% !important;
     }
-
     .u-2-of-5-bp1 {
         width: 40% !important;
     }
-
     .u-3-of-5-bp1 {
         width: 60% !important;
     }
-
     .u-4-of-5-bp1 {
         width: 80% !important;
     }
-
     .u-1-of-6-bp1 {
         width: 16.6666666667% !important;
     }
-
     .u-5-of-6-bp1 {
         width: 83.3333333333% !important;
     }
@@ -943,43 +1109,33 @@ input::placeholder {
     .u-1-of-2-bp2 {
         width: 50% !important;
     }
-
     .u-1-of-3-bp2 {
         width: 33.3333333333% !important;
     }
-
     .u-2-of-3-bp2 {
         width: 66.6666666667% !important;
     }
-
     .u-1-of-4-bp2 {
         width: 25% !important;
     }
-
     .u-3-of-4-bp2 {
         width: 75% !important;
     }
-
     .u-1-of-5-bp2 {
         width: 20% !important;
     }
-
     .u-2-of-5-bp2 {
         width: 40% !important;
     }
-
     .u-3-of-5-bp2 {
         width: 60% !important;
     }
-
     .u-4-of-5-bp2 {
         width: 80% !important;
     }
-
     .u-1-of-6-bp2 {
         width: 16.6666666667% !important;
     }
-
     .u-5-of-6-bp2 {
         width: 83.3333333333% !important;
     }
@@ -989,43 +1145,33 @@ input::placeholder {
     .u-1-of-2-bp3 {
         width: 50% !important;
     }
-
     .u-1-of-3-bp3 {
         width: 33.3333333333% !important;
     }
-
     .u-2-of-3-bp3 {
         width: 66.6666666667% !important;
     }
-
     .u-1-of-4-bp3 {
         width: 25% !important;
     }
-
     .u-3-of-4-bp3 {
         width: 75% !important;
     }
-
     .u-1-of-5-bp3 {
         width: 20% !important;
     }
-
     .u-2-of-5-bp3 {
         width: 40% !important;
     }
-
     .u-3-of-5-bp3 {
         width: 60% !important;
     }
-
     .u-4-of-5-bp3 {
         width: 80% !important;
     }
-
     .u-1-of-6-bp3 {
         width: 16.6666666667% !important;
     }
-
     .u-5-of-6-bp3 {
         width: 83.3333333333% !important;
     }
@@ -1035,43 +1181,33 @@ input::placeholder {
     .u-1-of-2-bp4 {
         width: 50% !important;
     }
-
     .u-1-of-3-bp4 {
         width: 33.3333333333% !important;
     }
-
     .u-2-of-3-bp4 {
         width: 66.6666666667% !important;
     }
-
     .u-1-of-4-bp4 {
         width: 25% !important;
     }
-
     .u-3-of-4-bp4 {
         width: 75% !important;
     }
-
     .u-1-of-5-bp4 {
         width: 20% !important;
     }
-
     .u-2-of-5-bp4 {
         width: 40% !important;
     }
-
     .u-3-of-5-bp4 {
         width: 60% !important;
     }
-
     .u-4-of-5-bp4 {
         width: 80% !important;
     }
-
     .u-1-of-6-bp4 {
         width: 16.6666666667% !important;
     }
-
     .u-5-of-6-bp4 {
         width: 83.3333333333% !important;
     }
@@ -1117,7 +1253,6 @@ No media query since this is the default in mobile first design
 */
 
 @media print {
-
     *,
     *:before,
     *:after {
@@ -1128,20 +1263,16 @@ No media query since this is the default in mobile first design
         box-shadow: none !important;
         text-shadow: none !important;
     }
-
     a,
     a:visited {
         text-decoration: underline;
     }
-
     a[href]:after {
-        content: " ("attr(href) ")";
+        content: " (" attr(href) ")";
     }
-
     abbr[title]:after {
-        content: " ("attr(title) ")";
+        content: " (" attr(title) ")";
     }
-
     /*
     * Don't show links that are fragment identifiers,
     * or use the `javascript:` pseudo protocol
@@ -1150,17 +1281,14 @@ No media query since this is the default in mobile first design
     a[href^="javascript:"]:after {
         content: "";
     }
-
     pre {
         white-space: pre-wrap !important;
     }
-
     pre,
     blockquote {
         border: 1px solid #999;
         page-break-inside: avoid;
     }
-
     /*
     * Printing Tables:
     * http://css-discuss.incutio.com/wiki/Printing_Tables
@@ -1168,32 +1296,18 @@ No media query since this is the default in mobile first design
     thead {
         display: table-header-group;
     }
-
     tr,
     img {
         page-break-inside: avoid;
     }
-
     p,
     h2,
     h3 {
         orphans: 3;
         widows: 3;
     }
-
     h2,
     h3 {
         page-break-after: avoid;
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --global-page-color: White;
-        --global-page-backgroundColor: var(--color-neutral-xxxx-dark);
-    }
-
-    .c-input {
-        --input_background: var(--global-color-neutral-xxxx-dark)
     }
 }
